@@ -12,6 +12,11 @@ ext {
     rxJavaVersion = '2.0.2'
     javaxAnnotationVersion = '1.0'
     javaxInjectVersion = '1'
+    androidAnnotationsVersion = '21.0.3'
+    daggerVersion = '2.11'
+    gsonVersion = '2.8.1'
+    okHttpVersion = '3.8.1'
+    retrofitVersion = '2.3.0'
 
     //Testing
     jUnitVersion = '4.12'
@@ -19,32 +24,58 @@ ext {
     mockitoKotlinVersion = '2.0.0-RC3'
     robolectricVersion = "3.4.2"
     mockitoVersion = "1.9.5"
+    androidSupportRunnerVersion = "1.0.2"
+    androidSupportRulesVersion = "1.0.2"
 
     domainDependencies = [
             javaxAnnotation: "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
-            javaxInject: "javax.inject:javax.inject:${javaxInjectVersion}",
-            rxJava: "io.reactivex.rxjava2:rxkotlin:${rxJavaVersion}"
+            javaxInject    : "javax.inject:javax.inject:${javaxInjectVersion}",
+            rxJava         : "io.reactivex.rxjava2:rxkotlin:${rxJavaVersion}"
     ]
 
     domainTestDependencies = [
-            junit: "junit:junit:${jUnitVersion}",
+            junit  : "junit:junit:${jUnitVersion}",
             mockito: "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlinVersion}",
             assertJ: "org.assertj:assertj-core:${assertJVersion}"
     ]
 
     dataDependencies = [
-            rxKotlin: "io.reactivex.rxjava2:rxkotlin:${rxJavaVersion}",
-            kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}",
+            rxKotlin       : "io.reactivex.rxjava2:rxkotlin:${rxJavaVersion}",
+            kotlin         : "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}",
             javaxAnnotation: "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
-            javaxInject: "javax.inject:javax.inject:${javaxInjectVersion}"
+            javaxInject    : "javax.inject:javax.inject:${javaxInjectVersion}"
     ]
 
     dataTestDependencies = [
-            junit: "junit:junit:${jUnitVersion}",
+            junit      : "junit:junit:${jUnitVersion}",
             kotlinJUnit: "org.jetbrains.kotlin:kotlin-test-junit:${kotlinVersion}",
-            assertJ: "org.assertj:assertj-core:${assertJVersion}",
-            mockito: "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlinVersion}",
+            assertJ    : "org.assertj:assertj-core:${assertJVersion}",
+            mockito    : "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlinVersion}",
             robolectric: "org.robolectric:robolectric:${robolectricVersion}"
+    ]
+
+    remoteDependencies = [
+            gson                     : "com.google.code.gson:gson:${gsonVersion}",
+            rxKotlin                 : "io.reactivex.rxjava2:rxkotlin:${rxJavaVersion}",
+            kotlin                   : "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}",
+            javaxAnnotation          : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject              : "javax.inject:javax.inject:${javaxInjectVersion}",
+            androidAnnotationsVersion: "com.android.support:support-annotations:${androidAnnotationsVersion}",
+            okHttp                   : "com.squareup.okhttp3:okhttp:${okHttpVersion}",
+            okHttpLogger             : "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
+            retrofit                 : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitConverter        : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            retrofitAdapter          : "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}"
+
+    ]
+
+    remoteTestDependencies = [
+            junit      : "junit:junit:${jUnitVersion}",
+            kotlinJUnit: "org.jetbrains.kotlin:kotlin-test-junit:${kotlinVersion}",
+            assertJ    : "org.assertj:assertj-core:${assertJVersion}",
+            mockito    : "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlinVersion}",
+            supportRunner: "com.android.support.test:runner:${androidSupportRunnerVersion}",
+            supportRules: "com.android.support.test:rules:${androidSupportRulesVersion}"
     ]
 
 }
