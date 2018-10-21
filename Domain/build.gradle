@@ -1,4 +1,4 @@
-apply plugin: 'java-library'
+apply plugin: 'kotlin'
 
 dependencies {
     def domainDependencies = rootProject.ext.domainDependencies
@@ -10,7 +10,7 @@ dependencies {
 
     testImplementation domainTestDependencies.junit
     testImplementation domainTestDependencies.mockito
-    testImplementation domainTestDependencies.assertj
+    testImplementation domainTestDependencies.assertJ
 
 }
 
