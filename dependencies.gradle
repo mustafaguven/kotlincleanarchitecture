@@ -1,7 +1,7 @@
 ext {
 
     //Android
-    androidBuildToolsVersion = "28.0.0"
+    androidBuildToolsVersion = "28.0.3"
     androidMinSdkVersion = 21
     androidTargetSdkVersion = 28
     androidCompileSdkVersion = 28
@@ -19,6 +19,7 @@ ext {
     okHttpVersion = '3.8.1'
     retrofitVersion = '2.3.0'
     roomVersion = '1.0.0'
+    archCompVersion = '1.1.1'
 
     //Testing
     jUnitVersion = '4.12'
@@ -95,14 +96,35 @@ ext {
     ]
 
     cacheTestDependencies = [
+            junit        : "junit:junit:${jUnitVersion}",
+            kotlinJUnit  : "org.jetbrains.kotlin:kotlin-test-junit:${kotlinVersion}",
+            assertJ      : "org.assertj:assertj-core:${assertJVersion}",
+            mockito      : "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlinVersion}",
+            roomTesting  : "android.arch.persistence.room:testing:${roomVersion}",
+            archTesting  : "android.arch.core:core-testing:${roomVersion}",
+            supportRunner: "com.android.support.test:runner:${androidSupportRunnerVersion}",
+            supportRules : "com.android.support.test:rules:${androidSupportRulesVersion}"
+    ]
+
+    presentationDependencies = [
+            daggerCompiler           : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger                   : "com.google.dagger:dagger:${daggerVersion}",
+            rxKotlin                 : "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}",
+            kotlin                   : "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}",
+            javaxAnnotation          : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject              : "javax.inject:javax.inject:${javaxInjectVersion}",
+            androidAnnotationsVersion: "com.android.support:support-annotations:${androidAnnotationsVersion}",
+            archRuntime              : "android.arch.lifecycle:runtime:${archCompVersion}",
+            archExtensions           : "android.arch.lifecycle:extensions:${archCompVersion}",
+            archCompiler             : "android.arch.lifecycle:compiler:${archCompVersion}"
+    ]
+
+    presentationTestDependencies = [
             junit      : "junit:junit:${jUnitVersion}",
             kotlinJUnit: "org.jetbrains.kotlin:kotlin-test-junit:${kotlinVersion}",
             assertJ    : "org.assertj:assertj-core:${assertJVersion}",
             mockito    : "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlinVersion}",
-            roomTesting: "android.arch.persistence.room:testing:${roomVersion}",
-            archTesting: "android.arch.core:core-testing:${roomVersion}",
-            supportRunner: "com.android.support.test:runner:${androidSupportRunnerVersion}",
-            supportRules : "com.android.support.test:rules:${androidSupportRulesVersion}"
+            robolectric: "org.robolectric:robolectric:${robolectricVersion}"
     ]
 
 }

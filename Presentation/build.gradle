@@ -3,11 +3,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
+
     def globalConfiguration = rootProject.extensions.getByName("ext")
 
     compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
     buildToolsVersion globalConfiguration["androidBuildToolsVersion"]
-
 
 
     defaultConfig {
@@ -26,16 +26,17 @@ android {
 }
 
 dependencies {
-    def cacheDependencies = rootProject.ext.cacheDependencies
-    def cacheTestDependencies = rootProject.ext.cacheTestDependencies
 
-    compileOnly cacheDependencies.javaxAnnotation
+    def presentationDependencies = rootProject.ext.presentationDependencies
+    def presentationTestDependencies = rootProject.ext.presentationTestDependencies
 
-    implementation project(':Data')
+    implementation project(':Domain')
 
-    implementation cacheDependencies.kotlin
-    implementation cacheDependencies.javaxInject
-    implementation cacheDependencies.rxKotlin
-    implementation cacheDependencies.roomRuntime
-    kapt cacheDependencies.roomCompiler
+    implementation presentationDependencies.kotlin
+    implementation presentationDependencies.javaxInject
+    implementation presentationDependencies.rxKotlin
+    implementation presentationDependencies.archRuntime
+    implementation presentationDependencies.archExtensions
+    kapt presentationDependencies.archCompiler
+
 }
