@@ -1,0 +1,89 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+
+    def globalConfigurations = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfigurations["androidCompileSdkVersion"]
+    buildToolsVersion globalConfigurations["androidBuildToolsVersion"]
+
+    defaultConfig {
+
+        minSdkVersion globalConfigurations["androidMinSdkVersion"]
+        targetSdkVersion globalConfigurations["androidTargetSdkVersion"]
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    def mobileDependencies = rootProject.ext.mobileUIDependencies
+    def mobileTestDependencies = rootProject.ext.mobileUITestDependencies
+
+    implementation project(':Presentation')
+    implementation project(':Data')
+    implementation project(':cache')
+    implementation project(':Remote')
+
+    implementation mobileDependencies.javaxAnnotation
+
+    implementation mobileDependencies.kotlin
+    implementation mobileDependencies.javaxInject
+    implementation mobileDependencies.rxKotlin
+    implementation mobileDependencies.androidAnnotationsVersion
+    implementation mobileDependencies.androidSupportV4
+    implementation mobileDependencies.androidSupportV13
+    implementation mobileDependencies.appCompatV7
+    implementation mobileDependencies.supportRecyclerView
+    implementation mobileDependencies.supportDesign
+    implementation mobileDependencies.timber
+    implementation mobileDependencies.rxAndroid
+    implementation mobileDependencies.glide
+    implementation mobileDependencies.dagger
+    implementation mobileDependencies.daggerSupport
+
+    testImplementation mobileTestDependencies.kotlinJUnit
+
+    kapt mobileDependencies.daggerCompiler
+    kapt mobileDependencies.daggerProcessor
+    compileOnly mobileDependencies.glassfishAnnotation
+
+    // Instrumentation test dependencies
+    androidTestImplementation mobileTestDependencies.junit
+    androidTestImplementation mobileTestDependencies.mockito
+    androidTestImplementation mobileTestDependencies.mockitoAndroid
+    androidTestImplementation (mobileTestDependencies.espressoCore) {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestImplementation (mobileTestDependencies.androidRunner) {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestImplementation (mobileTestDependencies.androidRules) {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestImplementation (mobileTestDependencies.espressoIntents) {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestImplementation(mobileTestDependencies.espressoContrib) {
+        exclude module: 'appcompat'
+        exclude module: 'appcompat-v7'
+        exclude module: 'support-v4'
+        exclude module: 'support-v13'
+        exclude module: 'support-annotations'
+        exclude module: 'recyclerview-v7'
+        exclude module: 'design'
+    }
+
+    kaptTest mobileDependencies.daggerCompiler
+    kaptAndroidTest mobileDependencies.daggerCompiler
+}
