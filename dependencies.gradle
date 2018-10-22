@@ -127,4 +127,6 @@ ext {
             robolectric: "org.robolectric:robolectric:${robolectricVersion}"
     ]
 
+    //kaldigim yer: Creating the data models for the presentation layer
+
 }
