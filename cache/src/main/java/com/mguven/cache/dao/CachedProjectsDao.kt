@@ -17,8 +17,8 @@ abstract class CachedProjectsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertProjects(project: List<CachedProjectEntity>)
 
-    @Query(DELETE_PROJECTS)
-    abstract fun deleteProjects()
+    /*@Query(DELETE_PROJECTS)
+    abstract fun deleteProjects()*/
 
     @Query(QUERY_BOOKMARKED_PROJECTS)
     abstract fun getBookmarkedProjects(): Flowable<List<CachedProjectEntity>>

@@ -19,7 +19,7 @@ class ProjectsCacheImpl @Inject constructor(
 
     override fun clearProjects(): Completable {
         return Completable.defer {
-            projectsDatabase.cachedProjectsDao().deleteProjects()
+            //projectsDatabase.cachedProjectsDao().deleteProjects()
             Completable.complete()
         }
     }
